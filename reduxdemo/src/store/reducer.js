@@ -1,11 +1,7 @@
-import {  CHANGE_INPUT, ADD_ITEM, DELETE_ITEM } from './actionType'
+import {  CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GTE_LIST } from './actionType'
 const defaultState = {
     inputValue : '',
-    list : [
-        '上午学习英语',
-        '下午学习react',
-        '晚上敲代码',
-    ]
+    list : []
 }
 let reducerObj = (state = defaultState, action) => {
     //console.log(state, action);
@@ -24,6 +20,12 @@ let reducerObj = (state = defaultState, action) => {
     if(action.type === DELETE_ITEM) {
         let newState = JSON.parse(JSON.stringify(state));
         newState.list.splice(action.index, 1);
+        return newState;
+    }
+    if(action.type === GTE_LIST) {
+        let newState = JSON.parse(JSON.stringify(state));
+        console.log(action, action.data.data.list)
+        newState.list = action.data.data.list;
         return newState;
     }
     return state;

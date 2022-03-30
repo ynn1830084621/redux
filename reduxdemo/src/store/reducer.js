@@ -1,4 +1,4 @@
-import {  CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GTE_LIST } from './actionType'
+import {  CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST } from './actionType'
 const defaultState = {
     inputValue : '',
     list : []
@@ -22,7 +22,7 @@ let reducerObj = (state = defaultState, action) => {
         newState.list.splice(action.index, 1);
         return newState;
     }
-    if(action.type === GTE_LIST) {
+    if(action.type === GET_LIST) {
         let newState = JSON.parse(JSON.stringify(state));
         console.log(action, action.data.data.list)
         newState.list = action.data.data.list;
